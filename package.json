@@ -1,16 +1,31 @@
 {
   "name": "gpg-merger",
   "version": "1.0.0",
-  "description": "GPG File Merger helps you to merge texts from different gpg and txt files and combine them into one singular gpg file",
+  "description": "GPG File Merger is the perfect software to merge mutliple gpg files in one singular gpg file. All separations and formatting is doing under the hook for you.",
   "productName": "GPG File Merger",
-  "repository": "",
   "main": "app.js",
+  "icon": "./build/icon.icns",
   "scripts": {
-    "start": "electron app.js"
+    "start": "electron app.js",
+    "snap": "electron-builder --linux snap"
   },
-  "license": "MIT",
+  "repository": "https://github.com/mohamed-arradi/GPGFileMerger",
+  "keywords": [
+    "gpg",
+    "merger",
+    "GNU Privacy Guard",
+    "file merger",
+    "encrypted",
+    "secure",
+    "gpg encrypt",
+    "linux",
+    "text file"
+  ],
+  "license": "GNU",
+  "author": "Mohamed Arradi-Alaoui",
   "devDependencies": {
-    "electron": "^13.1.8"
+    "electron": "^13.1.8",
+    "electron-builder": "^22.11.7"
   },
   "dependencies": {
     "applescript": "^1.0.0",

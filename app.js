@@ -31,7 +31,7 @@ function createWindow() {
     // Don't show the window until it's ready, this prevents any white flickering
     show: false,
     resizable: true,
-    icon: path.join(__dirname, './render/assets/icons/app512.png'),
+    icon: path.join(__dirname, './render/assets/icon.png'),
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false
@@ -94,7 +94,7 @@ ipcMain.on('app:on-file-delete', (event, arg) => {
 
 ipcMain.on('choose-file-action', (event, arg) => {
 
-  let types = [{ name: 'All Files', extensions: ['txt', 'gpg'] }]
+  let types = [{ name: 'All Files', extensions: ['gpg'] }]
   dialog.showOpenDialog({
     filters: types,
     properties: ['openFile', 'multiSelections']

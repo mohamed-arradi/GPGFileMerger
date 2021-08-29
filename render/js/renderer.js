@@ -7,6 +7,10 @@ ipcRenderer.once('getFilesUpdateReply', (event, files) => {
 })
 ipcRenderer.send('app:get-files')
 
+document.querySelector('#upload_icon_id').addEventListener('click', () => {
+    openDialogFile()
+})
+
 function openDialogFile() {
     ipcRenderer.once('actionReply', (event, files) => {
         displayFiles(files)
@@ -21,7 +25,6 @@ function mergeFiles() {
     ipcRenderer.send('merge-file-action');
 }
 
-// add files drop listener
 dragDrop('#uploader', (files) => {
     const _files = files.map(file => {
         return {
@@ -58,6 +61,7 @@ function displayFiles(files = []) {
         <div class='app__uploader__button-area'>
          <button class='app__merger__button-area__button' onclick='mergeFiles()'>Merge Files Content</button>
         </div>
+        <p style="font-size: 0.825em;"><i>make sure your gpg keys are in your OS keychain or keys manager before proceeding</i></p>
         `
         fileListElem.appendChild(mergeButtonDomElem)
     }

@@ -15,21 +15,24 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../css/styles.css">
-
 </head>
 
 <body class='app'>
-
   <!-- upload area -->
   <div id='uploader' class='app__uploader'>
       <div class='app__uploader__icon-area'>
-          <img src='../assets/file-add-svgrepo-com.svg' class='app__uploader__icon-area__icon' />
+          <img src='../assets/file-add-svgrepo-com.svg' class='app__uploader__icon-area__icon' id="upload_icon_id"/>
           <p class='app__uploader__icon-area__text'>Click or Drag file(s) here</p>
-          <p class=""><i>.gpg OR .txt <strong>only</strong></i></p>
+          <p class=""><i>.gpg files <strong>only</strong></i></p>
       </div>
       <div class='app__uploader__button-area'>
           <button class='app__uploader__button-area__button' onclick='openDialogFile()'>Click To Add Files</button>
       </div>
+      <div id="footer">
+        <p style="font-size:0.825em;"><i>Would like to contribute or add a feature ?</i></p>
+        <img src='../assets/github-svgrepo-com.svg' width="18px" id="github_icon_id"/>
+        <a style="font-size: 0.825em;" href="https://github.com/mohamed-arradi/GPGFileMerger" id="github-link" target="_blank">GitHub Repository</a>
+       </div> 
   </div>
   <!-- file list -->
   <div id='filelist' class='app__files'></div>

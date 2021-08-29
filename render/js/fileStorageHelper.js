@@ -54,10 +54,8 @@ function getAppDataPath() {
       const appDataFilePath = path.join(appDataDirPath, "/" + filename)
       try {
         fs.writeFileSync(appDataFilePath, content)
-        console.log("file saved:" + appDataFilePath);
         return appDataFilePath
     } catch(e) {
-        console.log("There was a problem saving app data! --> " + filename)
         console.error(e)
         return null
   }

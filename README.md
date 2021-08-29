@@ -78,7 +78,7 @@ The App should launch as per below (with a files list empty of course :)).
 ![Mac OS Version](/screenshots/macos-screenshot.png)
 
 #### Linux Screen
-![Linux Version](/screenshots/macos-screenshot.png)
+![Linux Version](/screenshots/linux-screenshot.png)
 
 #### Windows Screen
  Work in Progress

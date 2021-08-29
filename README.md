@@ -45,20 +45,28 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-macos-screenshot
+This project started by a family member requirements for its personal use only... at the beginning it was a simple but rather long bash script :). The aim is to merge multiple .gpg files in one sigular gpg files with a proper spacing and indentation.
+
+I decided to create a small GUI to avoid any scripting tasks. 
+
+Basically you can add gpg files as much as you want, either by Dragging & Dropping or by simply adding them via the dialog box. Once this is done, you can click "Merge gpg files". 
+
+This step depending if you are on Mac OS or Linux will vary, but it basically decrypt the content of all files and them merge them into one. Once this step is done, it encrypt the merged file and display it to you.
+
+Beware that you need to have GPG installed in your computer and with valid GPG keys inside your GPG Key manager for this software to work.
+
 ### Built With
 
 This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+
 * [ElectronJS](https://www.electronjs.org/)
-
-
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-
 ### Prerequisites
+
+I repeat again here, but make sure GPG is installed on your system and that you have valid keys or create ones.
 
 This is an example of how to list things you need to use the software and how to install them.
 * npm
@@ -66,6 +74,16 @@ This is an example of how to list things you need to use the software and how to
   npm install npm@latest -g
   npm start
   ```
+The App should launch as per below (with a files list empty of course :)).
+
+### Mac OS Screen
+![Mac OS Version](/screenshots/macos-screenshot.png)
+
+## Linux Screen
+![Linux Version](/screenshots/macos-screenshot.png)
+
+## Windows Screen
+ Word in Progress
 
 ### Installation
 

@@ -114,7 +114,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## Contact
 
 Mohamed Arradi Alaoui - [@arradimohamed](https://twitter.com/arradimohamed) - hello@arradimohamed.fr
-Project Link: [https://github.com/mohamed-arradi/GPGFileMerger](https://github.com/mohamed-arradi/GPGFileMerger)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->

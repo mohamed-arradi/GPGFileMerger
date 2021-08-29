@@ -18,25 +18,6 @@
           var isMac = process.platform === "darwin"
           var isLinux = process.platform === "linux"
 
-          function chooseTerminalForUnix() {
-          if (isLinux) {
-            for (let i = 0; i < terms.length; i++) {
-                which = spawnSync ("which", [terms[i]], {
-                  shell:true
-                });
-                if (which.status !== null && which.status === 0) { // Command found
-                    terminal = terms[i];
-                    break;
-                }
-            }
-            if (terminal === null) terminal = "xterm";
-          } else if (isWin) {
-            terminal = "cmd";
-          }
-          }
-
-          chooseTerminalForUnix()
-
           function createWindow() {
             // Create a new window
             window = new BrowserWindow({

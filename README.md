@@ -1,7 +1,4 @@
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
+
 [![MIT License][license-shield]][license-url]
 
 <!-- PROJECT LOGO -->
@@ -98,6 +95,11 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@arradimohamed](https://twitter.com/arradimohamed) - hello@arradimohamed.fr
+Mohamed Arradi Alaoui - [@arradimohamed](https://twitter.com/arradimohamed) - hello@arradimohamed.fr
 Project Link: [https://github.com/mohamed-arradi/GPGFileMerger](https://github.com/mohamed-arradi/GPGFileMerger)
 
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
+[license-url]: https://github.com/mohamed-arradi/GPGFileMerger/blob/main/LICENSE

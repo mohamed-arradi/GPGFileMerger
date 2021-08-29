@@ -94,7 +94,6 @@ The nature of this software, require to not be sandboxed on Linux and the same a
 
 Here is the process in order to create the generated snap 
 
-* npm
   ```sh
   npm run dist
   ``` 

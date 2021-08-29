@@ -59,9 +59,6 @@ Depending the OS you are on, if you are on Mac OS or Linux the experience will v
 
 Beware that you need to have GPG installed in your computer and with valid GPG keys inside your GPG Key manager for this software to work.
 
-### Built With
-
-* [ElectronJS](https://www.electronjs.org/)
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -85,7 +82,11 @@ The App should launch as per below (with a files list empty of course :)).
 ![Linux Version](/screenshots/macos-screenshot.png)
 
 #### Windows Screen
- Word in Progress
+ Work in Progress
+
+### Built With
+
+* [ElectronJS](https://www.electronjs.org/)
 
 ### Installation
 

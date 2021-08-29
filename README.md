@@ -4,8 +4,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="build/icon.icns" alt="Logo" width="80" height="80">
+  <a href="#">
+    <img src="icon.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Universal GPG File Merger</h3>
@@ -46,7 +46,7 @@
 ## About The Project
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
-
+macos-screenshot
 ### Built With
 
 This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.

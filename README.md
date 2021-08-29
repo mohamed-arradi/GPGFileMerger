@@ -52,15 +52,13 @@ I decided to create a small GUI to avoid any annoying scripting tasks.
 
 Basically you can add gpg files as much as you want, either by Dragging & Dropping or by simply adding them via the dialog box offered. 
 
-Once this is done, you simply click "Merge gpg files". 
+Once this is done, you simply click on the merge button. 
 
 Depending the OS you are on, if you are on Mac OS or Linux the experience will vary a little, but it basically decrypt the content of all files and them merge them into one. Once this step is done, it encrypt the merged file and display it to you.
 
 Beware that you need to have GPG installed in your computer and with valid GPG keys inside your GPG Key manager for this software to work.
 
 ### Built With
-
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
 * [ElectronJS](https://www.electronjs.org/)
 

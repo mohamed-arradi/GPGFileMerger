@@ -67,7 +67,6 @@ Beware that you need to have GPG installed in your computer and with valid GPG k
 
 I repeat again here, but make sure GPG is installed on your system and that you have valid keys or create ones.
 
-This is an example of how to list things you need to use the software and how to install them.
 * npm
   ```sh
   npm install npm@latest -g
@@ -94,7 +93,7 @@ As of now you need to have the source code in order to build. However I created 
 
 The nature of this software, require to not be sandboxed on Linux and the same applies for Mac OS. 
 
-Here is the process in order to create the generated snap 
+Here is the process to create the generated snap binary in order to install it on your system permanenty
 
   ```sh
   npm run dist

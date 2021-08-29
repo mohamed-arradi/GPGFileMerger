@@ -12,7 +12,7 @@
 
   <p align="center">
     Universal Desktop Software that merge all your GPG Files in one ! 
-<p align="center">>Compatible Windows / Linux / Mac OS</p>
+<p align="center">Compatible Windows / Linux / Mac OS</p>
     <br />
   </p>
 </p>

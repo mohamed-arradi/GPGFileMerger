@@ -271,7 +271,8 @@
                             console.error('There was an error reading the file!', err);
                             showAlert("Error", "There was an error while encrypting the generated file!")
                           } else {
-                            shell.showItemInFolder(destinationFile);
+                            fs.unlinkSync(tempTextFilePath)
+                            shell.showItemInFolder(destinationFile)
                           }
                         }
                       );

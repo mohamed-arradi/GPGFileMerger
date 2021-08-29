@@ -46,13 +46,15 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This project started by a family member requirements for its personal use only... at the beginning it was a simple but rather long bash script :). The aim is to merge multiple .gpg files in one sigular gpg files with a proper spacing and indentation.
+This project started by a family member requirements for its personal use only... at the beginning it was a simple but rather long bash script :). The aim is to merge multiple .gpg files in one sigular gpg file with proper spacing and indentation.
 
-I decided to create a small GUI to avoid any scripting tasks. 
+I decided to create a small GUI to avoid any annoying scripting tasks. 
 
-Basically you can add gpg files as much as you want, either by Dragging & Dropping or by simply adding them via the dialog box. Once this is done, you can click "Merge gpg files". 
+Basically you can add gpg files as much as you want, either by Dragging & Dropping or by simply adding them via the dialog box offered. 
 
-This step depending if you are on Mac OS or Linux will vary, but it basically decrypt the content of all files and them merge them into one. Once this step is done, it encrypt the merged file and display it to you.
+Once this is done, you simply click "Merge gpg files". 
+
+Depending the OS you are on, if you are on Mac OS or Linux the experience will vary a little, but it basically decrypt the content of all files and them merge them into one. Once this step is done, it encrypt the merged file and display it to you.
 
 Beware that you need to have GPG installed in your computer and with valid GPG keys inside your GPG Key manager for this software to work.
 

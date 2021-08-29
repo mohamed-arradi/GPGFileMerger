@@ -11,7 +11,8 @@
   <h3 align="center">Universal GPG File Merger</h3>
 
   <p align="center">
-    Universal Desktop Software that merge all your GPG Files in one ! Compatible Windows / Linux / Mac OS
+    Universal Desktop Software that merge all your GPG Files in one ! 
+<p align="center">>Compatible Windows / Linux / Mac OS</p>
     <br />
   </p>
 </p>
@@ -76,13 +77,13 @@ This is an example of how to list things you need to use the software and how to
   ```
 The App should launch as per below (with a files list empty of course :)).
 
-### Mac OS Screen
+##### Mac OS Screen
 ![Mac OS Version](/screenshots/macos-screenshot.png)
 
-## Linux Screen
+#### Linux Screen
 ![Linux Version](/screenshots/macos-screenshot.png)
 
-## Windows Screen
+#### Windows Screen
  Word in Progress
 
 ### Installation
@@ -91,7 +92,6 @@ The App should launch as per below (with a files list empty of course :)).
 ## Roadmap
 
 See the [open issues](https://github.com/mohamed-arradi/GPGFileMerger/issues) for a list of proposed features (and known issues).
-
 
 <!-- CONTRIBUTING -->
 ## Contributing

@@ -88,6 +88,16 @@ The App should launch as per below (with a files list empty of course :)).
 
 ### Installation
 
+As of now you need to have the source code in order to build. However I created a snap version in order to install it locally on your linux desktop. 
+
+The nature of this software, require to not be sandboxed on Linux and the same applies for Mac OS. 
+
+Here is the process in order to create the generated snap 
+
+* npm
+  ```sh
+  npm run dist
+  ``` 
 <!-- ROADMAP -->
 ## Roadmap
 

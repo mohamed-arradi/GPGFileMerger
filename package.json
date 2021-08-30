@@ -6,9 +6,10 @@
   "main": "app.js",
   "icon": "./build/icon.icns",
   "scripts": {
-    "start": "electron app.js",
+    "start": "electron .",
+    "pack": "electron-builder --dir",
     "postinstall": "electron-builder install-app-deps",
-    "dist": "electron-builder -l snap"
+    "dist": "electron-builder"
   },
   "repository": "https://github.com/mohamed-arradi/GPGFileMerger",
   "keywords": [
@@ -33,7 +34,8 @@
     "appId": "com.soft.gpgmerger",
     "productName": "GPG File Merger",
     "linux": {
-      "category": "Utility"
+      "category": "Utility",
+      "synopsis": "GPG File Merger is the perfect software to merge mutliple gpg files in one singular gpg file. All separations and formatting is doing under the hook for you."
     },
     "snap": {
       "confinement": "classic",

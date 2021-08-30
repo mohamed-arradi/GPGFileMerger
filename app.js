@@ -223,40 +223,38 @@
 
                       for(let fileIndex = 0; fileIndex < filesToProcess.length; fileIndex++) {
                         let file = filesToProcess[fileIndex]
-                      decrypt(file.path, (e, result) => {
-                        if (e) {
-                          errors.push(e.message)
-                        } else {
-                          fs.appendFileSync(tempTextFilePath, "### BEGIN " + file.name + "### \n");
-                          fs.appendFileSync(tempTextFilePath, result.output + "\n");
-                          fs.appendFileSync(tempTextFilePath, "### END " + file.name + "### \n");
-                          if (fileIndex === filesToProcess.length - 1) {
-                            const dateFormat = require('dateformat');
-                            fs.appendFileSync(tempTextFilePath, "Latest modification: " + dateFormat(new Date(), "dd-mm-yyyy hh:MM:ss") + "### \n");
+                        
+                        var inStream = fs.createReadStream(file.path);
+
+                        gpg.decryptStream(inStream, 
+                          ['--recipient', data.response,'--trust-model', 'always'], function (err, res) {
+                          if (err) {
+                            errors.push(err.message)
+                          } else {
+                            fs.appendFileSync(tempTextFilePath, "### BEGIN " + file.name + "### \n");
+                            fs.appendFileSync(tempTextFilePath, res.toString() + "\n");
+                            fs.appendFileSync(tempTextFilePath, "### END " + file.name + "### \n");
+                            if (fileIndex === filesToProcess.length - 1) {
+                              const dateFormat = require('dateformat');
+                              fs.appendFileSync(tempTextFilePath, "Latest modification: " + dateFormat(new Date(), "dd-mm-yyyy hh:MM:ss") + "### \n");
+                            }
                           }
-                        }
-                      })
+                        });
                       }
 
 
                   if (errors.length == 0) {
-                    let destinationFile = appDirectoryPathPerOS() + '/output/generated_gpg_merged.txt.gpg'
+
+                    var inStream = fs.createReadStream(tempTextFilePath);
                     
-                      gpg.callStreaming(
-                        tempTextFilePath, 
-                        destinationFile, 
-                        ['--recipient=' + data.response, '--encrypt'],
-                        function(err) {
-                          fs.unlinkSync(tempTextFilePath)
-                          if (err !== null) {
-                            console.error('There was an error reading the file!', err);
-                            showAlert("Error", "There was an error while encrypting the generated file!")
-                          } else {
-                            fs.unlinkSync(tempTextFilePath)
-                            shell.showItemInFolder(destinationFile)
-                          }
-                        }
-                      );
+                    gpg.encryptStream(inStream,  ['--recipient=' + data.response, '--encrypt', '--trust-model', 'always', '--armor'], function (err, res) {
+                      if (err !== null) {
+                        console.error('There was an error reading the file!', err);
+                        showAlert("Error", "There was an error while encrypting the generated file!")
+                      } else {
+                        shell.showItemInFolder(tempTextFilePath)
+                      }
+                    });
                   } else {
                     showAlert("Error", errors.join("\n"))
                   }

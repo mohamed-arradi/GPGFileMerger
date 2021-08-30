@@ -7,7 +7,7 @@ base-version: '20.08'
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.node14
 command: run.sh
-separate-locales: false
+separate-locales: false 
 finish-args:
   - --share=ipc
   - --socket=x11

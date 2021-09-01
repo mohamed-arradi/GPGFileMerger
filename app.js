@@ -5,7 +5,6 @@ const fs = require('fs')
 const { fileSizeInBytes, appTemporaryDataFolderPath, appDirectoryPathPerOS } = require('./render/js/fileStorageHelper')
 const prompt = require('electron-prompt');
 const gpg = require('gpg')
-const makeSynchronous = require('make-synchronous');
 const ProgressBar = require('electron-progressbar');
 
 let window = null
@@ -150,18 +149,30 @@ ipcMain.on('merge-file-action', (event, arg) => {
         promptRequirement("Encryption UID Request",
           'Please enter your gpg uid (to encrypt files)')
           .then(function (data) {
-            if (data.cancelled == false && data.response !== "") {
-
+            if (data.cancelled == false 
+              && data.response !== "") {
               let resultTextFilePath = appTemporaryDataFolderPath('', "/output/encypted_files_result.txt.gpg")
-              let tmp_file = appTemporaryDataFolderPath('', "/output/temp_merged_file.txt")
-      
-              const fn = makeSynchronous(async (files,tempTextFilePath,uid)  => {
-                var fs = require('fs')
-                var gpg = require('gpg')
-                var errors = Array()
+              let tempTextFilePath = appTemporaryDataFolderPath('', "/output/temp_merged_file.txt")
+              let uid = data.response
+              var errors = Array()
+             
+              var progressBar = new ProgressBar({
+                text: 'Processing data...',
+                detail: 'Wait...'
+              });
+              
+              progressBar
+                .on('completed', function() {
+                  console.info(`completed...`);
+                  progressBar.detail = 'Task completed. Exiting...';
+                })
+                .on('aborted', function() {
+                  console.info(`aborted...`);
+                });
 
-                for (let fileIndex = 0; fileIndex < files.length; fileIndex++) {
-                  let file = files[fileIndex]
+              const decryptFilesProcess = new Promise((resolve, reject) => {
+                for (let fileIndex = 0; fileIndex < filesToProcess.length; fileIndex++) {
+                  let file = filesToProcess[fileIndex]
                   var inStream = fs.createReadStream(file.path);
                   gpg.decryptStream(inStream,
                     ['--recipient', uid, '--trust-model', 'always'], function (err, res) {
@@ -172,82 +183,44 @@ ipcMain.on('merge-file-action', (event, arg) => {
                         fs.appendFileSync(tempTextFilePath, res.toString() + "\n");
                         fs.appendFileSync(tempTextFilePath, "### END " + file.name + "### \n");
                       }
+                      if (fileIndex === filesToProcess.length - 1) {
+                        resolve({filePath: tempTextFilePath, errors: errors})
+                        }
                     });
-                }
-                return errors.length > 0 ? errors : null
-            });
-              
-            var progressBar = new ProgressBar({
-              text: 'Processing data...',
-              detail: 'Wait...'
-            });
-            
-            progressBar
-              .on('completed', function() {
-                console.info(`completed...`);
-                progressBar.detail = 'Task completed. Exiting...';
-              })
-              .on('aborted', function() {
-                console.info(`aborted...`);
-              });
-            
-              let errorsDecrypt = fn(filesToProcess, tmp_file, data.response)
-
-              setTimeout(function() {
-                progressBar.setCompleted();
-              }, 12000);
-
-              if (errorsDecrypt === null) {
-              progressBar.setCompleted();
-              const fn2 = makeSynchronous(async (tmp_file,resultFilePath,uid)  => { 
-                var gpg = require('gpg')
-                var fs = require('fs')
-                var error = null
-                gpg.callStreaming(tmp_file, resultFilePath, ['--encrypt', '-r' + uid], function (err, res) {
-                  if (err !== null) {
-                    error = err
                   }
-                });
-
-                return error
-              })
+            }).catch((error) => {
+              progressBar.setCompleted()
+              showAlert("Error", "An error during decryption occured.")
+            })
             
-              let error = fn2(tmp_file, resultTextFilePath, data.response);
-
-              if (error === null) {
-              if(fs.existsSync(tmp_file)) {
-                fs.unlinkSync(tmp_file)
-              }
-              shell.showItemInFolder(resultTextFilePath)
-            }
+            decryptFilesProcess.then((response) => {
+              if (response.errors.length === 0 
+                && response.filePath !== undefined) {
+              gpg.callStreaming(tempTextFilePath, resultTextFilePath, ['--encrypt', '-r' + uid], function (err, res) {
+                if (err === null) {
+                  if(fs.existsSync(tempTextFilePath)) {
+                    fs.unlinkSync(tempTextFilePath)
+                  }
+                  progressBar.setCompleted()
+                  shell.showItemInFolder(resultTextFilePath)
+                } else {
+                  progressBar.setCompleted()
+                 showAlert("Error", err.message)
+                }
+              })
           } else {
-            showAlert("Error", errorsDecrypt.join("\n"))
+            progressBar.setCompleted()
+            showAlert("Error", response.errors.join("\n"))
           }
+            })
           }
         })
   }
   } catch (error) {
-    console.log("error: => " + error);
+    showAlert("Error", "An error occured: " + error.message)
   }
 })
 
-async function decryptFiles(files, tempTextFilePath, uid) {
-  for (let fileIndex = 0; fileIndex < files.length; fileIndex++) {
-    let file = files[fileIndex]
-    var inStream = fs.createReadStream(file.path);
-    gpg.decryptStream(inStream,
-      ['--recipient', uid, '--trust-model', 'always'], function (err, res) {
-        console.log("titi");
-        if (err) {
-        //  errors.push(err.message)
-        } else {
-          fs.appendFileSync(tempTextFilePath, "### BEGIN " + file.name + "### \n");
-          fs.appendFileSync(tempTextFilePath, res.toString() + "\n");
-          fs.appendFileSync(tempTextFilePath, "### END " + file.name + "### \n");
-        }
-      });
-  }
-}
 async function promptRequirement(title, label) {
 
   return new Promise(function (resolve, reject) {

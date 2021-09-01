@@ -65,9 +65,8 @@ Beware that you need to have GPG installed in your computer and with valid GPG k
 
 ### Prerequisites
 
-I repeat again here, but make sure GPG is installed on your system and that you have valid keys or create ones.
+ Make sure GPG is installed on your system and that you have valid keys or create ones.
 
-* npm
   ```sh
   npm install npm@latest -g
   npm start

@@ -9,7 +9,8 @@
     "start": "electron .",
     "pack": "electron-builder --dir",
     "postinstall": "electron-builder install-app-deps",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "snap": "electron-builder --linux snap"
   },
   "repository": "https://github.com/mohamed-arradi/GPGFileMerger",
   "keywords": [
@@ -23,7 +24,7 @@
     "linux",
     "text file"
   ],
-  "license": "GNU",
+  "license": "MIT",
   "author": "Mohamed Arradi-Alaoui",
   "devDependencies": {
     "electron": "^13.1.8",
@@ -34,11 +35,15 @@
     "appId": "com.soft.gpgmerger",
     "productName": "GPG File Merger",
     "linux": {
+      "target": [
+        "snap",
+        "deb"
+      ],
       "category": "Utility",
       "synopsis": "GPG File Merger is the perfect software to merge mutliple gpg files in one singular gpg file. All separations and formatting is doing under the hook for you."
     },
     "snap": {
-      "confinement": "strict",
+      "confinement": "classic",
       "plugs": [
         "desktop",
         "desktop-legacy",
@@ -47,8 +52,6 @@
         "browser-support",
         "opengl",
         "gpg-public-keys",
-        "process-control",
-        "system-observe",
         "gpg-keys",
         {
           "personal-files": {

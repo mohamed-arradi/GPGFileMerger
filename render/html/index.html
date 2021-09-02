@@ -20,18 +20,15 @@
 <body class='app'>
   <!-- upload area -->
   <div id='uploader' class='app__uploader'>
-      <div class='app__uploader__icon-area'>
-          <img src='../assets/file-add-svgrepo-com.svg' class='app__uploader__icon-area__icon' id="upload_icon_id"/>
-          <p class='app__uploader__icon-area__text'>Click or Drag file(s) here</p>
-          <p class=""><i>.gpg files <strong>only</strong></i></p>
+      <div class='upload_border'>
+        <p>Drop your file(s) here or click on the + sign below</p>
+        <button class='app__uploader__button-area__button' onclick='openDialogFile()'>+</button>
       </div>
-      <div class='app__uploader__button-area'>
-          <button class='app__uploader__button-area__button' onclick='openDialogFile()'>Click To Add Files</button>
-      </div>
-      <div id="footer">
-        <p style="font-size:0.825em;"><i>Would like to contribute or add a feature ?</i></p>
+      <p style="text-align: center;"><i>.gpg files <strong>only</strong></i></p>
+      <div id="footer" class="footer">
+        <p style="font-size:0.725em;"><i>Would like to contribute ?</i>
         <img src='../assets/github-svgrepo-com.svg' width="18px" id="github_icon_id"/>
-        <a style="font-size: 0.825em;" href="https://github.com/mohamed-arradi/GPGFileMerger" id="github-link">GitHub Repository</a>
+        <a style="font-size: 0.825em;" href="https://github.com/mohamed-arradi/GPGFileMerger" id="github-link"> GitHub Repository</a></p>
        </div> 
   </div>
   <!-- file list -->

@@ -13,6 +13,26 @@ body {
   padding: 0;
   margin: 0; }
 
+ .upload_border {
+    margin-left: 10px;
+    margin-right: 10px;
+    border-style: dotted;
+    font-size: 14px;
+    height: 60vh;
+    margin-top: 50px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: bold; 
+  }
+
+  .footer {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  bottom: 0;
+  padding: 10px;
+  margin-top: 40px;
+  }
 .app {
   width: 100vw;
   height: 100vh;
@@ -32,7 +52,7 @@ body {
       align-items: center; }
       .app__uploader__icon-area__icon {
         flex: 0 0 auto;
-        width: 90px; }
+        width: 50px; }
       .app__uploader__icon-area__text {
         font-size: 14px;
         text-transform: uppercase;
@@ -41,14 +61,14 @@ body {
     .app__uploader__button-area {
       flex: 0 0 auto;
       text-align: center;
-      padding: 30px; }
+      padding: 10px; }
       .app__uploader__button-area__button {
         border: none;
         outline: none;
         padding: 6px 12px;
         font-size: 12px;
         text-transform: uppercase;
-        background-color: #055cdf;
+        background-color: #000000;
         color: #fff;
         border-radius: 3px;
         overflow: hidden;

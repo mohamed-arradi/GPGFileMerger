@@ -179,7 +179,7 @@ ipcMain.on('merge-file-action', (event, arg) => {
       }
 
       promptRequirement("Encryption UID Request",
-        'Please enter your gpg uid (to encrypt files)')
+        'Please enter your gpg uid')
         .then(function (data) {
           if (data.cancelled == false
             && data.response !== null) {

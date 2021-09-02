@@ -3,7 +3,7 @@ version: '0.1'
 summary:'GPG File Merger is the perfect software to merge mutliple gpg files in one singular gpg file'
 description: |
  GPG File Merger is the perfect software to merge mutliple gpg files in one singular gpg file. All separations and formatting is doing under the hook for you.
-base: core18
+base: core20
 confinement: classic
 grade: stable
 

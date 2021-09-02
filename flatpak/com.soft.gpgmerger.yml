@@ -11,6 +11,7 @@ separate-locales: false
 finish-args:
   - --share=ipc
   - --socket=x11
+  - --filesystem=xdg-documents
 build-options:
   append-path: /usr/lib/sdk/node14/bin
   cflags: -O2 -g

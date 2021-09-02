@@ -6,6 +6,7 @@
   const prompt = require('electron-prompt');
   const gpg = require('gpg')
   const ProgressBar = require('electron-progressbar');
+  const open = require("open");
 
   let window = null
   var filesToProcess = Array()
@@ -27,10 +28,11 @@
       // Don't show the window until it's ready, this prevents any white flickering
       show: false,
       resizable: true,
-      icon: path.join(__dirname, './render/assets/icotMOi en tn.png'),
+      icon: path.join(__dirname, './render/assets/icon.png'),
       webPreferences: {
         nodeIntegration: true,
-        contextIsolation: false
+        contextIsolation: false,
+        spellcheck: false
       }
     })
 
@@ -43,7 +45,7 @@
     const handleRedirect = (e, url) => {
       if (url !== e.sender.getURL()) {
         e.preventDefault()
-        shell.openExternal(url)
+        open(url)
       }
     }
     window.webContents.on('will-navigate', handleRedirect)
@@ -196,7 +198,10 @@
                       fs.unlinkSync(tempTextFilePath)
                     }
                     progressBar.setCompleted()
+                    filesToProcess = Array()
+                    event.sender.send("fileMergeReply", filesToProcess)
                     shell.showItemInFolder(resultTextFilePath)
+
                   } else {
                     progressBar.setCompleted()
                   showAlert("Error", err.message)

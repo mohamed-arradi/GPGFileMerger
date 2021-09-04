@@ -19,39 +19,13 @@ exports.escapeSpaceIfNeeded = function escapeSpaceIfNeeded(pathFile) {
     return pathFile.replace(/(\s+)/g, '\\$1')
 }
 
-exports.appDirectoryPathPerOS = function appDirectoryPathPerOS() {
-    return getAppDataPath()
-}
+exports.appTemporaryDataFolderPath = function saveAppData(content, dirPath, filename) {
 
-function getAppDataPath() {
-    switch (process.platform) {
-      case "darwin": {
-        var p = path.join(process.env.HOME, "Library", "Application Support", "GPGFileMerger")
-        return p
-      }
-      case "win32": {
-        var p = path.join(process.env.APPDATA, "GPGFileMerger")
-        return p
-      }
-      case "linux": {
-        var p = path.join(process.env.HOME, "GPGFileMerger")
-        return p
-      }
-      default: {
-        console.log("Unsupported platform!");
-      }
-    }
-  }
-  
-  
-  exports.appTemporaryDataFolderPath = function saveAppData(content, filename) {
-    const appDataDirPath = getAppDataPath()
-  
-      if (!fs.existsSync(appDataDirPath)) {
-          fs.mkdirSync(appDataDirPath)
+      if (!fs.existsSync(dirPath)) {
+          fs.mkdirSync(dirPath)
       }
 
-      const appDataFilePath = path.join(appDataDirPath, "/" + filename)
+      const appDataFilePath = path.join(dirPath, filename)
       try {
         fs.writeFileSync(appDataFilePath, content)
         return appDataFilePath

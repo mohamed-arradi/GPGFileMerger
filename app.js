@@ -173,7 +173,8 @@ ipcMain.on('merge-file-action', (event, arg) => {
     if (filesToProcess != undefined
       && filesToProcess.length > 0) {
 
-      let folderPath = appDirectoryPathPerOS() + "/output"
+      let folderPath = path.join(app.getPath('userData'),"output")
+      console.log(folderPath)
       if (!fs.existsSync(folderPath)) {
         fs.mkdirSync(folderPath)
       }
@@ -183,8 +184,8 @@ ipcMain.on('merge-file-action', (event, arg) => {
         .then(function (data) {
           if (data.cancelled == false
             && data.response !== null) {
-            let resultTextFilePath = appTemporaryDataFolderPath('', "/output/encypted_files_result.txt.gpg")
-            let tempTextFilePath = appTemporaryDataFolderPath('', "/output/temp_merged_file.txt")
+            let resultTextFilePath = appTemporaryDataFolderPath('', folderPath, "encypted_files_result.txt.gpg")
+            let tempTextFilePath = appTemporaryDataFolderPath('', folderPath,"temp_merged_file.txt")
             let uid = data.response
             var errors = Array()
 

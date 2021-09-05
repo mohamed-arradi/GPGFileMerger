@@ -7,6 +7,7 @@ const prompt = require('electron-prompt');
 const gpg = require('gpg')
 const ProgressBar = require('electron-progressbar');
 const open = require("open");
+const { platform } = require('os')
 
 let window = null
 var filesToProcess = Array()
@@ -173,7 +174,14 @@ ipcMain.on('merge-file-action', (event, arg) => {
     if (filesToProcess != undefined
       && filesToProcess.length > 0) {
 
-      let folderPath = path.join(app.getPath('userData'),"output")
+      var folderPath = ""
+      
+      if(process.platform === "win32") {
+        folderPath = path.join(app.getPath('userData'),"output")
+      }  else {
+        folderPath = path.join(appDirectoryPathPerOS(),"output")
+      }
+
       console.log(folderPath)
       if (!fs.existsSync(folderPath)) {
         fs.mkdirSync(folderPath)

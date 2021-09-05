@@ -19,6 +19,27 @@ exports.escapeSpaceIfNeeded = function escapeSpaceIfNeeded(pathFile) {
     return pathFile.replace(/(\s+)/g, '\\$1')
 }
 
+exports.appDirectoryPathPerOS = function appDirectoryPathPerOS() {
+    return getAppDataPath()
+}
+
+function getAppDataPath() {
+    switch (process.platform) {
+      case "darwin": {
+        var p = path.join(process.env.HOME, "Library", "Application Support", "GPGFileMerger")
+        return p
+      }
+      case "linux": {
+        var p = path.join(process.env.HOME, "GPGFileMerger")
+        return p
+      }
+      default: {
+        return ""
+      }
+    }
+  }
+  
+
 exports.appTemporaryDataFolderPath = function saveAppData(content, dirPath, filename) {
 
       if (!fs.existsSync(dirPath)) {

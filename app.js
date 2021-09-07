@@ -2,7 +2,7 @@ const { app, BrowserWindow, dialog } = require('electron')
 const { ipcMain, shell } = require('electron')
 const path = require('path')
 const fs = require('fs')
-const { fileSizeInBytes, appTemporaryDataFolderPath } = require('./render/js/fileStorageHelper')
+const { fileSizeInBytes, appTemporaryDataFolderPath, bytesForFile } = require('./render/js/fileStorageHelper')
 const prompt = require('electron-prompt');
 const gpg = require('gpg')
 const ProgressBar = require('electron-progressbar');
@@ -182,7 +182,6 @@ ipcMain.on('merge-file-action', (event, arg) => {
         folderPath = path.join(appDirectoryPathPerOS(),"output")
       }
 
-      console.log(folderPath)
       if (!fs.existsSync(folderPath)) {
         fs.mkdirSync(folderPath)
       }
@@ -237,16 +236,18 @@ ipcMain.on('merge-file-action', (event, arg) => {
             decryptFilesProcess.then((response) => {
               if (response.errors.length === 0
                 && response.filePath !== undefined) {
-                gpg.callStreaming(tempTextFilePath, resultTextFilePath, ['--encrypt', '-r' + uid], function (err, res) {
+                gpg.callStreaming(tempTextFilePath, resultTextFilePath, [ '-r' + uid,'--encrypt'], function (err, res) {
                   if (err === null) {
                     if (fs.existsSync(tempTextFilePath)) {
                       fs.unlinkSync(tempTextFilePath)
                     }
                     progressBar.setCompleted()
                     filesToProcess = Array()
+                    if (bytesForFile(resultTextFilePath) === 0) {
+                      showAlert("Error","Encryption might have failed as your result file seem empty (unless you wanted to encrypt an empty file)")
+                    } 
                     event.sender.send("fileMergeReply", filesToProcess)
                     shell.showItemInFolder(resultTextFilePath)
-
                   } else {
                     progressBar.setCompleted()
                     showAlert("Error", err.message)

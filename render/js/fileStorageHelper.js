@@ -8,6 +8,11 @@ exports.fileSizeInBytes = function fileSizeInBytes(filepath) {
     return bytesToSize(fileSizeInBytes);
 }
 
+exports.bytesForFile = function bytesForFile(filepath) {
+  var stats = fs.statSync(filepath);
+  return stats.size;
+}
+
 function bytesToSize(bytes) {
     var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
     if (bytes == 0) return '0 Byte';

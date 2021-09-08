@@ -4,13 +4,10 @@
   "description": "GPG File Merger is the perfect software to merge mutliple gpg files in one singular gpg file. All separations and formatting is doing under the hook for you.",
   "productName": "GPG File Merger",
   "main": "app.js",
-  "icon":"./build/icon.ico",
+  "icon": "./build/icon.ico",
   "scripts": {
     "start": "electron .",
-    "pack": "electron-builder --dir",
-    "postinstall": "electron-builder install-app-deps",
-    "dist": "electron-builder",
-    "snap": "electron-builder --linux snap",
+
     "build": "electron-packager . gpg-merger --platform win32 --arch x64 --out dist/ --overwrite",
     "setup": "electron-installer-windows --src dist/gpg-merger-win32-x64/ --dest dist/installers/  --certificateFile my_signing_key.pfx --certificatePassword azerty1234"
   },
@@ -29,11 +26,14 @@
   "license": "MIT",
   "author": "Mohamed Arradi-Alaoui",
   "devDependencies": {
+    "@electron-forge/maker-wix": "^6.0.0-beta.60",
     "electron": "^13.1.8",
     "electron-builder": "^22.11.7",
     "electron-installer-snap": "^5.1.0",
     "electron-installer-windows": "^3.0.0",
-    "electron-packager": "^15.3.0"
+    "electron-packager": "^15.3.0",
+    "electron-wix-msi": "^3.2.0",
+    "electron-wix-msi-custom": "^2.1.5"
   },
   "build": {
     "appId": "com.soft.gpgmerger",
@@ -95,20 +95,20 @@
     "category": "public.app-category.utilities"
   },
   "win": {
-   "name": "GPG File Merger",
-   "icon":"resources/icon.ico",
-   "iconNuget":"resources/icon.ico",
-   "title": "GPG File Merger",
-   "version": "0.0.1",
-   "msi": true,
-   "authors": "Mohamed Arradi-Alaoui",
-   "publisher": "Mohamed Arradi-Alaoui",
-   "target": [
-    "msi"
+    "name": "GPG File Merger",
+    "icon": "resources/icon.ico",
+    "iconNuget": "resources/icon.ico",
+    "title": "GPG File Merger",
+    "version": "0.0.1",
+    "msi": true,
+    "authors": "Mohamed Arradi-Alaoui",
+    "publisher": "Mohamed Arradi-Alaoui",
+    "target": [
+      "msi"
     ],
-   "tags": [
-    "Utility"
-  ]
+    "tags": [
+      "Utility"
+    ]
   },
   "dependencies": {
     "dateformat": "^4.5.1",

@@ -42,7 +42,6 @@ function createWindow() {
     window.show()
   })
 
-
   const staticLinkHandleRedirect = (e, url) => {
     if (url !== e.sender.getURL()) {
       e.preventDefault()
@@ -223,7 +222,9 @@ ipcMain.on('merge-file-action', (event, arg) => {
                       fs.appendFileSync(tempTextFilePath, res.toString() + "\n");
                       fs.appendFileSync(tempTextFilePath, "### END " + file.name + "### \n");
                     }
+                    window.setProgressBar(fileIndex + 1 / filesToProcess.length)
                     if (fileIndex === filesToProcess.length - 1) {
+                      window.setProgressBar(0)
                       resolve({ filePath: tempTextFilePath, errors: errors })
                     }
                   });

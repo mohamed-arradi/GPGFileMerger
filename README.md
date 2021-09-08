@@ -80,6 +80,9 @@ The App should launch as per below (with a files list empty of course :)).
 ![Linux Version](/screenshots/linux-screenshot.png)
 
 #### Windows Screen
+![Windows Version](/screenshots/win-screenshot.png)
+
+#### Windows Screen
  Work in Progress
 
 ### Built With
